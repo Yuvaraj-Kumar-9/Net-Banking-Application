@@ -22,7 +22,7 @@ and GitHub publishing are **pending user approval/credentials**.
 | Automated tests | ✅ Complete | 67/67 passing, including concurrency |
 | Documentation | ✅ Complete | README + API/architecture/testing/deployment docs |
 | Docker / deployment config | ✅ Prepared | Dockerfile, render.yaml, `.env.example` |
-| GitHub repository | ⏸ Pending | Repository not initialized yet |
+| GitHub repository | ⏸ Awaiting approval | Local repo initialised on `main` with 6 commits; no remote, no push |
 | Public deployment | ⏸ Blocked | No hosting/database credentials; no URL claimed |
 
 ---
@@ -133,7 +133,7 @@ The demo database was reset after end-to-end testing, so Aarav starts at
 | Backend | Running from `target/hfdc-bank.jar` on port 8080 |
 | Frontend dev | Not running; production build in `frontend/dist` |
 | Maven | `C:\Users\personal\Documents\EarnBridge\tools\apache-maven-3.9.9` |
-| Git | Installed (2.55.0); repository **not initialized** in this folder |
+| Git | Installed (2.55.0); local repo on `main`, 6 commits, 145 tracked files, no remote |
 | Docker | Not installed |
 | GitHub CLI | Not installed |
 
@@ -151,9 +151,15 @@ Demo accounts:
 ### GitHub publishing — awaiting approval
 
 - Repository name: **`HFDC-Bank-FullStack`** (do not invent a URL).
-- No repository has been created, no commits exist, nothing has been pushed.
-- Before pushing: confirm `.gitignore`, scan for secrets, and get explicit user
-  approval.
+- A local repository exists on branch `main` with 6 logical commits:
+  1. `chore:` scaffold, Maven build, SQL schema and dev scripts
+  2. `feat(backend):` layered Spring JDBC banking API with JWT cookie auth
+  3. `test(backend):` 67 unit and concurrency tests
+  4. `feat(frontend):` responsive React net banking UI
+  5. `build:` Docker image, Render blueprint and GitHub Actions CI
+  6. `docs:` README, API, architecture, testing and deployment guides
+- No remote is configured and nothing has been pushed. A push needs explicit
+  user approval and the repository URL.
 
 ### Public deployment — awaiting credentials/approval
 
@@ -186,8 +192,8 @@ Demo accounts:
 
 ## 7. Next steps
 
-1. Get user approval for the GitHub repository; initialize git and make logical
-   commits (backend, frontend, tests, docs).
+1. Get user approval for the GitHub repository; add the remote and push the
+   existing `main` branch (6 commits are ready locally).
 2. Get deployment credentials through the provider dashboard and deploy using
    `docs/DEPLOYMENT.md`.
 3. Verify the live checklist (health, login, CSRF, transfer, SPA routes, cookies).
