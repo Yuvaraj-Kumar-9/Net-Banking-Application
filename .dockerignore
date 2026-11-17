@@ -1,0 +1,14 @@
+# Keep the Docker build context small and free of local secrets.
+.git
+.gitignore
+.github
+.idea
+.vscode
+target
+frontend/node_modules
+frontend/dist
+tools
+*.log
+.env
+.env.*
+!.env.example

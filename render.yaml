@@ -1,0 +1,35 @@
+# ===========================================================================
+# Render Blueprint for HFDC Bank.
+#
+# The web service is built from the Dockerfile and serves the React UI plus
+# the Spring Boot API on one origin. MySQL is NOT provided by Render, so point
+# DB_URL at a MySQL 8 instance (Aiven, TiDB Cloud Serverless, Railway, etc.).
+#
+# In the Render dashboard, fill in the three secret values when prompted.
+# Never commit real credentials to this file.
+# ===========================================================================
+services:
+  - type: web
+    name: hfdc-bank
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /api/auth/health
+    autoDeploy: true
+    envVars:
+      - key: DB_URL
+        sync: false
+      - key: DB_USER
+        sync: false
+      - key: DB_PASSWORD
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+      - key: JWT_EXPIRATION_MS
+        value: "86400000"
+      - key: DEV_MODE
+        value: "false"
+      - key: COOKIE_SECURE
+        value: "true"
+      - key: COOKIE_SAME_SITE
+        value: "lax"
