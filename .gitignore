@@ -1,0 +1,46 @@
+# Build output
+target/
+frontend/dist/
+frontend/build/
+frontend/node_modules/
+*.jar
+*.war
+
+# Dependencies / logs
+node_modules/
+npm-debug.log*
+yarn-error.log*
+*.log
+
+# Environment and secrets - NEVER commit
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+secrets/
+
+# IDE / editor
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+.classpath
+.project
+.settings/
+.factorypath
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Test / temp output
+*.tmp
+*.swp
+uploads/
+coverage/
+
+# Local database data (if a portable instance is used)
+tools/mysql-test/data/
