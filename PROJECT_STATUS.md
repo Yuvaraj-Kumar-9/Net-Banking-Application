@@ -130,7 +130,9 @@ The demo database was reset after end-to-end testing, so Aarav starts at
 | Project root | `C:\Users\personal\Documents\EarnBridge\HFDC-Bank-FullStack` |
 | MySQL | `127.0.0.1:33306`, root (no password), `hfdc_bank` seeded |
 | App DB user | `hfdc_user` / `change_me` (local only) |
-| Backend | Running from `target/hfdc-bank.jar` on port 8080 |
+| Backend | Stopped. Start it with `scripts\start-app.cmd` (serves UI + API on port 8080) |
+| One-click launcher | `scripts\start-app.cmd` (starts MySQL, auto-seeds a brand-new data dir, runs the jar) |
+| Stop script | `scripts\stop-app.cmd` (stops the backend and the dev MySQL on 33306) |
 | Frontend dev | Not running; production build in `frontend/dist` |
 | Maven | `C:\Users\personal\Documents\EarnBridge\tools\apache-maven-3.9.9` |
 | Git | Installed (2.55.0); `main` tracks `origin` at <https://github.com/Yuvaraj-Kumar-9/Net-Banking-Application> |
@@ -206,6 +208,19 @@ Demo accounts:
 ---
 
 ## 8. How to resume
+
+### Everyday use — one command
+
+```bat
+cd /d C:\Users\personal\Documents\EarnBridge\HFDC-Bank-FullStack
+scripts\start-app.cmd
+```
+
+Wait for `Started HfdcBankApplication`, then open <http://localhost:8080>.
+Keep the window open; `Ctrl+C` stops the website. `scripts\stop-app.cmd` stops
+both the backend and the dev MySQL instance.
+
+### Developer mode — hot reload on 5173
 
 ```bat
 REM Start the isolated database (if not running)

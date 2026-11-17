@@ -141,17 +141,30 @@ model, transfer sequence and design trade-offs.
 - Node.js 20+ and npm
 - MySQL 8 — either an existing server or the bundled isolated instance
 
-### Option A — bundled isolated MySQL (recommended)
+### Option A — one-click local start (recommended)
 
-The scripts use a self-contained MySQL data directory on port **33306** so your
-normal MySQL service is untouched. Edit `MYSQL_BIN` in
-`scripts/start-dev-mysql.cmd` if MySQL is installed elsewhere.
+Requires the built jar at `target\hfdc-bank.jar`. It is already present in this
+workspace; see [Single-jar production build](#single-jar-production-build) to
+rebuild it.
+
+1. Double-click `scripts\start-app.cmd` (or run it from a terminal).
+2. Wait for `Started HfdcBankApplication`.
+3. Open **http://localhost:8080** and sign in with a demo account below.
+
+The script starts the isolated MySQL instance on port 33306 when needed, applies
+local development defaults, and serves the API and the React website from one
+URL. Keep the window open; `Ctrl+C` stops the website. To stop both the backend
+and MySQL, run `scripts\stop-app.cmd`.
+
+### Option B — developer mode with hot reload
+
+Use this when you are editing the frontend. It needs JDK 21, Maven and Node.js.
 
 ```bat
 REM 1. Start MySQL on 127.0.0.1:33306 (root, no password - local only)
 scripts\start-dev-mysql.cmd
 
-REM 2. Create the schema, seed data and the hfdc_user login
+REM 2. First run only: create the schema, seed data and the hfdc_user login
 scripts\dev-db-reset.cmd
 
 REM 3. Start the API on http://localhost:8080
@@ -161,13 +174,13 @@ REM 4. In a second terminal, start the UI on http://localhost:5173
 scripts\run-frontend.cmd
 ```
 
-Open **http://localhost:5173** and sign in with a demo account below.
+Open **http://localhost:5173**. Vite proxies `/api` to port 8080.
 
 > `run-backend.cmd` uses the documented local credentials `hfdc_user` /
 > `change_me`. Override `DB_URL`, `DB_USER`, `DB_PASSWORD`, `JWT_SECRET` and
 > `CORS_ALLOWED_ORIGINS` in your shell before running it if needed.
 
-### Option B — your existing MySQL on 3306
+### Option C — your existing MySQL on 3306
 
 Create the database and app user, then start the backend with your credentials.
 

@@ -26,12 +26,14 @@ if not errorlevel 1 (
   exit /b 0
 )
 
-if not exist "%DATADIR%" (
+if not exist "%DATADIR%\mysql" (
   echo Initialising a new MySQL data directory: %DATADIR%
+  rem Remove a partial or uninitialised directory left by an earlier failure.
+  if exist "%DATADIR%" rmdir /s /q "%DATADIR%"
   mkdir "%DATADIR%" 2>nul
-  "%MYSQL_BIN%\mysqld.exe" --initialize-insecure --basedir="%MYSQL_BASE%" --datadir="%DATADIR%"
+  "%MYSQL_BIN%\mysqld.exe" --initialize-insecure --basedir="%MYSQL_BASE%" --datadir="%DATADIR%" --log-error="%LOGFILE%"
   if errorlevel 1 (
-    echo ERROR: MySQL data directory initialisation failed.
+    echo ERROR: MySQL data directory initialisation failed. See %LOGFILE%
     exit /b 1
   )
 )
