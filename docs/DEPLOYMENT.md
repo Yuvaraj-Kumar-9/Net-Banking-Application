@@ -100,28 +100,29 @@ Expected tables: `customers`, `accounts`, `transactions`, `transfers`,
 > The seed contains **public demo credentials**. Use it only for a portfolio demo,
 > and never store real data in the same database.
 
-### 2.3 Push the repository to GitHub
+### 2.3 Repository and source control
 
-The intended repository name is **`HFDC-Bank-FullStack`**. Do not invent or
-publish a URL until the repository actually exists.
+The project is already published at
+<https://github.com/Yuvaraj-Kumar-9/Net-Banking-Application> on branch `main`
+(remote `origin`). Render and Railway can connect to that repository directly;
+no further Git setup is required.
+
+If you fork or clone it elsewhere:
 
 ```bash
-git init
-git add .
-git commit -m "feat: complete HFDC Bank full-stack application"
-git branch -M main
-git remote add origin <your-repository-url>
-git push -u origin main
+git clone https://github.com/Yuvaraj-Kumar-9/Net-Banking-Application.git
+cd Net-Banking-Application
 ```
 
-Before pushing:
+Before pushing changes:
 
 - `git status` must not list `.env`, `target/`, `node_modules/`, logs or database
   files.
 - Search for secrets: `git grep -nE "(password|secret|token)\s*[:=]"` and confirm
   only placeholders/dev defaults are present.
-- The default `JWT_SECRET` and `hfdc_user/change_me` values are **local dev
-  defaults** and must be replaced in production.
+- `hfdc_user` / `change_me` and the local script JWT secret are **local dev
+  defaults** and must be replaced in production. `JWT_SECRET` itself has no
+  default: the application refuses to start without a 32+ byte value.
 
 ### 2.4 Create the Render service
 

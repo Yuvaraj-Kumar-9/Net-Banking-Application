@@ -21,6 +21,8 @@ is explicit and reviewable.
 ![Tests](https://img.shields.io/badge/tests-67%20passing-2e7d32?style=flat-square)
 ![License](https://img.shields.io/badge/license-educational-8e24aa?style=flat-square)
 
+**Repository:** <https://github.com/Yuvaraj-Kumar-9/Net-Banking-Application>
+
 ---
 
 ## Contents
@@ -371,8 +373,9 @@ the Spring Boot jar, and runs as a non-root user. A [`render.yaml`](render.yaml)
 Blueprint is included for Render with a Docker web service and generated JWT
 secret.
 
-**Deployment status:** the application has been built and verified locally, but
-it is **not publicly deployed yet**. No live URL is claimed until a deployment is
+**Deployment status:** the source is published at
+<https://github.com/Yuvaraj-Kumar-9/Net-Banking-Application>, but the application
+is **not publicly deployed yet**. No live URL is claimed until a deployment is
 completed and verified. [`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md) contains
 step-by-step instructions for Render + a managed MySQL 8 provider, Railway, and a
 split frontend/backend option, including the exact environment variables and a

@@ -1,8 +1,8 @@
 # HFDC Bank — Project Status
 
 **Last updated:** 2026-11-17
-**Overall status:** Application complete and verified locally. Public deployment
-and GitHub publishing are **pending user approval/credentials**.
+**Overall status:** Application complete, verified locally, and published to
+GitHub. Public deployment is **pending hosting/database credentials**.
 
 > HFDC Bank is a fictional educational banking simulation. It is not a real
 > financial institution.
@@ -22,7 +22,7 @@ and GitHub publishing are **pending user approval/credentials**.
 | Automated tests | ✅ Complete | 67/67 passing, including concurrency |
 | Documentation | ✅ Complete | README + API/architecture/testing/deployment docs |
 | Docker / deployment config | ✅ Prepared | Dockerfile, render.yaml, `.env.example` |
-| GitHub repository | ⏸ Awaiting approval | Local repo initialised on `main` with 6 commits; no remote, no push |
+| GitHub repository | ✅ Published | <https://github.com/Yuvaraj-Kumar-9/Net-Banking-Application> (`main` at `e92a121`) |
 | Public deployment | ⏸ Blocked | No hosting/database credentials; no URL claimed |
 
 ---
@@ -133,7 +133,7 @@ The demo database was reset after end-to-end testing, so Aarav starts at
 | Backend | Running from `target/hfdc-bank.jar` on port 8080 |
 | Frontend dev | Not running; production build in `frontend/dist` |
 | Maven | `C:\Users\personal\Documents\EarnBridge\tools\apache-maven-3.9.9` |
-| Git | Installed (2.55.0); local repo on `main`, 6 commits, 145 tracked files, no remote |
+| Git | Installed (2.55.0); `main` tracks `origin` at <https://github.com/Yuvaraj-Kumar-9/Net-Banking-Application> |
 | Docker | Not installed |
 | GitHub CLI | Not installed |
 
@@ -148,18 +148,22 @@ Demo accounts:
 
 ## 5. Pending / blocked
 
-### GitHub publishing — awaiting approval
+### GitHub publishing — complete
 
-- Repository name: **`HFDC-Bank-FullStack`** (do not invent a URL).
-- A local repository exists on branch `main` with 6 logical commits:
+- Repository: <https://github.com/Yuvaraj-Kumar-9/Net-Banking-Application>
+  (the repository name differs from the local folder name; the application is
+  still HFDC Bank).
+- `main` was pushed on 2026-11-17 and tracks `origin/main`.
+- The published history contains these commits:
   1. `chore:` scaffold, Maven build, SQL schema and dev scripts
   2. `feat(backend):` layered Spring JDBC banking API with JWT cookie auth
   3. `test(backend):` 67 unit and concurrency tests
   4. `feat(frontend):` responsive React net banking UI
   5. `build:` Docker image, Render blueprint and GitHub Actions CI
   6. `docs:` README, API, architecture, testing and deployment guides
-- No remote is configured and nothing has been pushed. A push needs explicit
-  user approval and the repository URL.
+  7. `docs:` record local git history and remaining approval gates
+- 145 tracked files. `node_modules`, `target`, `frontend/dist` and local
+  database files are excluded by `.gitignore`.
 
 ### Public deployment — awaiting credentials/approval
 
@@ -192,13 +196,11 @@ Demo accounts:
 
 ## 7. Next steps
 
-1. Get user approval for the GitHub repository; add the remote and push the
-   existing `main` branch (6 commits are ready locally).
-2. Get deployment credentials through the provider dashboard and deploy using
+1. Get deployment credentials through the provider dashboard and deploy using
    `docs/DEPLOYMENT.md`.
-3. Verify the live checklist (health, login, CSRF, transfer, SPA routes, cookies).
-4. Update this file and the README with the verified URL and deployment record.
-5. Optional hardening: rate limiting, email provider, Flyway, Testcontainers,
+2. Verify the live checklist (health, login, CSRF, transfer, SPA routes, cookies).
+3. Update this file and the README with the verified URL and deployment record.
+4. Optional hardening: rate limiting, email provider, Flyway, Testcontainers,
    frontend code-splitting.
 
 ---
